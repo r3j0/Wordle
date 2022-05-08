@@ -1,1 +1,1 @@
-OMOK ( Editor : ReJo )
+Wordle ( Editor : ReJo )
