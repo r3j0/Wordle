@@ -15,7 +15,13 @@ char wordDatabase[10000][6] = {
 "apery","aphid","apian","aping","apish","apnea","appal","apple","apply","appro","april","apron","apses","apsis","aptly","arabs","araks","arbor","arced","ardor","areal","areas",
 "arena","arent","argon","argot","argue","argus","arias","aries","arise","armed","armor","aroma",
 
-}; // 5/11 200°³
+"arose","arras","array","arrow","arson","artsy","ascot","ashen","ashes","asian","aside","asked","asker","askew","aspic","assay","asses","asset","aster","astir",
+"aswan","ataxy","atilt","atlas","atoll","atoms","atone","attar","attic","audio","audit","auger","augur","aunts","aunty","aural","auras","auric","avail","avast",
+"avens","avers","avert","avian","avoid","await","awake","award","aware","awash","awful","awing","awoke","axial","axing","axiom","axles","axons","aztec","azure",
+"babas","babel","babes","backs","bacon","baddy","bader","badge","badly","bagel","baggy","bails","baits","baked","baker","bakes","baldy","baled","bales","balky",
+"balls","bally","balms","balmy","balsa","banal","bands","bandy","bangs","banjo","banks","banns","barbs","bards","bared","barer","bares","barge","barks","barky",
+
+}; // 5/13 3 / 48
 int workDatabaseSize = 100;
 
 int main(void) {
