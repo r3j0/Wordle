@@ -21,7 +21,12 @@ char wordDatabase[10000][6] = {
 "babas","babel","babes","backs","bacon","baddy","bader","badge","badly","bagel","baggy","bails","baits","baked","baker","bakes","baldy","baled","bales","balky",
 "balls","bally","balms","balmy","balsa","banal","bands","bandy","bangs","banjo","banks","banns","barbs","bards","bared","barer","bares","barge","barks","barky",
 
-}; // 5/13 3 / 48
+"barmy","barns","baron","barre","basal","based","baser","bases","basic","basil","basin","basis","basks","basso","baste","batch","bated","bates","bathe","baths",
+"batik","baton","batty","baulk","bawdy","bawls","bayed","bayer","bayou","bazar","beach","beads","beady","beaks","beams","beamy","beans","beany","beard","bears",
+"beast","beats","beaus","beaut","beaux","bebop","becks","bedim","beech","beefs","beefy","beeps","beers","beery","beets","befit","befog","began","begat","beget",
+"begin","begot","begun","beige","being","belay","belch","belie","belle","bells","belly","below","belts","bench","bends","beret","bergs","berme","berry","berth",
+"beryl","beset","besom","besot","bests","betel","betsy","bevel","bevvy","bhang","bible","biddy","bided","bides","bidet","bifid","bigot","bijou","biker","bikes",
+}; // 5/18 4 / 48
 int workDatabaseSize = 100;
 
 int main(void) {
