@@ -26,7 +26,14 @@ char wordDatabase[10000][6] = {
 "beast","beats","beaus","beaut","beaux","bebop","becks","bedim","beech","beefs","beefy","beeps","beers","beery","beets","befit","befog","began","begat","beget",
 "begin","begot","begun","beige","being","belay","belch","belie","belle","bells","belly","below","belts","bench","bends","beret","bergs","berme","berry","berth",
 "beryl","beset","besom","besot","bests","betel","betsy","bevel","bevvy","bhang","bible","biddy","bided","bides","bidet","bifid","bigot","bijou","biker","bikes",
-}; // 5/18 4 / 48
+
+"biles","bilge","bills","billy","bimbo","binds","binge","bingo","biota","biped","birch","birds","birth","bison","bitch","biter","bites","bitts","bitty","blabs",
+"black","blade","blame","bland","blank","blare","blase","blast","blate","blaze","bleak","bleat","bleed","bleep","blend","bless","blimp","blind","blink","blips",
+"bliss","blitz","bloat","blobs","block","blocs","bloke","blond","blood","bloom","blots","blown","blows","blowy","bluer","blues","bluff","blunt","blurb","blurs",
+"blurt","blush","board","boars","boast","boats","bobby","boded","bodes","bodge","boers","boeuf","bogey","boggy","bogie","bogus","boils","bolts","bombs","bonce",
+"bonds","boned","bones","boney","bongo","bongs","bonny","bonus","boobs","booby","booed","books","booms","boons","boors","boost","booth","boots","booty","booze",
+
+}; // 5/20 5 / 48
 int workDatabaseSize = 100;
 
 int main(void) {
