@@ -6,8 +6,8 @@
 // #define SHOW : Show Answer
 #define SHOW
 
-// 총 단어 개수 : 2311개
-#define MAX 2311
+// 총 단어 개수 : 16962개
+#define MAX 16962
 
 void textcolor(int colorNum) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNum);
@@ -28,7 +28,7 @@ int main(void) {
 	int ran;
 	int answer_num = 0;
 	int count = 0;
-	for (int r = 0; r < 200; r++) {
+	for (int r = 0; r < 2000; r++) {
 		ran = rand() % 100;
 		answer_num += ran;
 		if (answer_num > MAX)
@@ -71,6 +71,10 @@ int main(void) {
 		}
 		printf(" >> ");
 		scanf("%s", ch);
+
+		for (int z = 0; z < 5; z++) {
+			ch[z] -= 32;
+		}
 		FILE* fp = fopen("C:\\Users\\박정근\\Desktop\\Code\\Wordle\\all.txt", "r");
 		
 		while (!feof(fp)) {
@@ -105,7 +109,7 @@ int main(void) {
 				int done = 0;
 				if (ch[i] == answer[i]) {
 					textcolor(10);
-					printf("[ %c ] ", ch[i] - 32);
+					printf("[ %c ] ", ch[i]);
 					textcolor(15);
 					done = 1;
 					co++;
@@ -126,7 +130,7 @@ int main(void) {
 							if (con == 1)
 								continue;
 							textcolor(14);
-							printf("[ %c ] ", ch[i] - 32);
+							printf("[ %c ] ", ch[i]);
 							textcolor(15);
 							done = 1;
 							queue[queue_size++] = j;
@@ -134,7 +138,7 @@ int main(void) {
 						}
 					}
 					if (done == 0) {
-						printf("[ %c ] ", ch[i] - 32);
+						printf("[ %c ] ", ch[i]);
 					}
 				}
 			}
