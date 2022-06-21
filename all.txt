@@ -21,6 +21,7 @@ adapt
 adept
 admin
 admit
+adieu
 adobe
 adopt
 adore
