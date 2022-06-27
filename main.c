@@ -209,6 +209,7 @@ int main(void) {
 	printLine(hp, da, st); // Last line print & Answer Print
 	gotoxy(5, 15);
 	printf("The answer is %s. \n\n", answer);
+	Sleep(5000);
 
 	return 0;
 }
