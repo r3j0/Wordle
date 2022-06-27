@@ -8,73 +8,125 @@
 // 총 단어 개수 : 16962개
 #define MAX 16962
 
-void textcolor(int colorNum) {
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNum);
+// Path ( Database )
+char path[250] = "C:\\Users\\박정근\\Desktop\\Code\\Wordle\\all.txt";
+
+void color(int text, int back) { // Text Color Set Function
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (back<<4) + text);
 }
 
-void gotoxy(int x, int y) {
+void gotoxy(int x, int y) { // Cursor Move Function
 	COORD Pos;
 	Pos.X = x;
 	Pos.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
+void printLine(int n, char data[][6], int status[][6]) { // print line ( with color ) function
+	gotoxy(10, n * 2);
+	for (int i = 0; i < 5; i++) {
+		// Check Color
+		if (status[n - 1][i] == 0)
+			color(15, 0);
+		else if (status[n - 1][i] == 1)
+			color(0, 15);
+		else if (status[n - 1][i] == 2)
+			color(0, 14);
+		else if (status[n - 1][i] == 3)
+			color(0, 10);
+		else
+			color(4, 4);
+
+		// Data Print
+		if (data[n - 1][i] == '\0')
+			printf("[   ]");
+		else
+			printf("[ %c ]", data[n-1][i]);
+
+		color(15, 0);
+		printf(" ");
+	}
+}
+
+void printBoard(int start, char data[][6], int status[][6]) { // print board function
+	for (int i = start; i <= 6; i++)
+		printLine(i, data, status);
+}
+
 int main(void) {
-	system("mode con cols=60 lines=25");
+	system("mode con cols=49 lines=25");
 	srand((int)time(NULL));
 
-	char answer[10];
-	int ran;
-	int answer_num = 0;
-	int count = 0;
-	for (int r = 0; r < 2000; r++) {
+	char da[6][6] = {0,}; // Character Data
+	int st[6][6] = {0,}; // Status Data ( Green, Yellow )
+
+	char answer[10]; // Answer
+	int answer_num = 0; // Answer Number
+
+	int ran; // (for arithmetic)
+	int count = 0; // (for searching)
+
+	// Random Answer
+	for (int r = 0; r < 20000; r++) {
 		ran = rand() % 100;
 		answer_num += ran;
 		if (answer_num > MAX)
 			answer_num -= MAX;
 	}
-	FILE* anfp = fopen("C:\\Users\\박정근\\Desktop\\Code\\Wordle\\all.txt", "r");
+	
+	// Find Answer ( number )
+	FILE* anfp = fopen(path, "r");
+	
 	while (!feof(anfp)) {
 		fgets(answer, 6, anfp);
 		if (answer[0] == '\n')
 			continue;
 
-		if (count != answer_num) {
-			count++;
-			continue;
+		if (count == answer_num) {
+			break;
 		}
-		break;
+
+		count++;
 	}
 
-	int hp = 6;
-	int row = 0;
-	int go = 1;
-
-#ifdef SHOW
-	printf("%d\n", answer_num);
-	printf("Answer is %s\n", answer);
-	row += 2;
-#endif
 	fclose(anfp);
 
+	int hp = 0; // Hp ( Now Line )
 
-	printf("\n");
-	while (hp > 0) {
-		char ch[6];
-		char pt[6];
+#ifdef SHOW
+	// Answer Print
+	gotoxy(0, 0);
+	printf("%d / Answer is %s", answer_num, answer);
+#endif
 
-		int search = 0;
-		if (go == 1) {
-			row += 2;
-			go = 0;
-		}
+	while (hp < 6) {
+		char ch[6]; // Input Data
+		char pt[6]; // (for searching)
+
+		int search = 0; // Whether the string existed in txt
+		int overlap = 0; // Whether the string overlap
+
+		printBoard(1, da, st); // Print All ( First )
+
+		gotoxy(5, 14); // Input
 		printf(" >> ");
 		scanf("%s", ch);
 
-		for (int z = 0; z < 5; z++) {
-			ch[z] -= 32;
+		for (int z = 0; z < 5; z++) {// Case Upper
+			if(ch[z] >= 97 && ch[z] <= 122)
+				ch[z] -= 32;
 		}
-		FILE* fp = fopen("C:\\Users\\박정근\\Desktop\\Code\\Wordle\\all.txt", "r");
+
+		// Overlap
+		for (int o = 0; o < hp; o++) {
+			if (!strcmp(ch, da[o])) {
+				overlap = 1;
+				break;
+			}
+		}
+
+		// Find string
+		FILE* fp = fopen(path, "r");
 		
 		while (!feof(fp)) {
 			fgets(pt, 6, fp);
@@ -85,38 +137,47 @@ int main(void) {
 		}
 		fclose(fp);
 
-		int co = 0;
+		int co = 0; // Check Answer ( 5 : All Correct )
 
-		if (search == 0) {
-			gotoxy(0, row);
-			printf("It is not a word.");
-			gotoxy(0, row - 1);
-			printf("             ");
-			gotoxy(0, row - 1);
+		if (overlap == 1) { // Overlap
+			gotoxy(5, 13);
+			printf("Already Use.");
+			gotoxy(5, 14);
+			printf("                     ");
 			continue;
 		}
 		else {
-			go = 1;
-			gotoxy(0, row);
-			printf("                      ");
-			gotoxy(0, row);
-			printf("\t\t\t");
+			if (search == 0) { // Can't Find
+				gotoxy(5, 13);
+				printf("It is not a word.");
+				gotoxy(5, 14);
+				printf("                     ");
+				continue;
+			}
+			else {
+				gotoxy(5, 13);
+				printf("                     ");
+				gotoxy(5, 14);
+				printf("                     ");
 
-			int queue[5] = { 0, };
-			int queue_size = 0;
-			for (int i = 0; i < 5; i++) {
-				int done = 0;
-				if (ch[i] == answer[i]) {
-					textcolor(10);
-					printf("[ %c ] ", ch[i]);
-					textcolor(15);
-					done = 1;
-					co++;
-					queue[queue_size++] = i;
+				strcpy(da[hp], ch);
+
+				// Check Green
+				int queue[5] = { 0, };
+				int queue_size = 0;
+				for (int i = 0; i < 5; i++) {
+					st[hp][i] = 1;
+					if (ch[i] == answer[i]) {
+						st[hp][i] = 3;
+						co++;
+						queue[queue_size++] = i;
+					}
 				}
-				else {
+
+				// Check Yellow
+				for (int i = 0; i < 5; i++) {
 					for (int j = 0; j < 5; j++) {
-						if (i == j)
+						if (i == j || st[hp][i] == 3)
 							continue;
 						if (ch[i] == answer[j]) {
 							int con = 0;
@@ -126,32 +187,28 @@ int main(void) {
 									break;
 								}
 							}
-							if (con == 1)
-								continue;
-							textcolor(14);
-							printf("[ %c ] ", ch[i]);
-							textcolor(15);
-							done = 1;
-							queue[queue_size++] = j;
-							break;
+							if (con == 0) {
+								st[hp][i] = 2;
+								queue[queue_size++] = j;
+								break;
+							}
 						}
 					}
-					if (done == 0) {
-						printf("[ %c ] ", ch[i]);
-					}
+				}
+				hp++;
+
+				if (co == 5) { // All Correct
+					gotoxy(5, 14);
+					printf("Correct!");
+					break;
 				}
 			}
-			printf("\n");
-			hp--;
-		}
-
-		if (co == 5) {
-			printf("Correct!\n");
-			break;
 		}
 	}
 
-	printf("\nThe answer is %s.\n", answer);
+	printLine(hp, da, st); // Last line print & Answer Print
+	gotoxy(5, 15);
+	printf("The answer is %s. \n\n", answer);
 
 	return 0;
 }
