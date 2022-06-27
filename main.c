@@ -5,11 +5,11 @@
 
 // #define SHOW : Show Answer
 
-// ÃÑ ´Ü¾î °³¼ö : 16962°³
+// ï¿½ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½ï¿½ : 16962ï¿½ï¿½
 #define MAX 16962
 
 // Path ( Database )
-char path[250] = "C:\\Users\\¹ÚÁ¤±Ù\\Desktop\\Code\\Wordle\\all.txt";
+char path[250] = "( all.txt directory )";
 
 void color(int text, int back) { // Text Color Set Function
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (back<<4) + text);
