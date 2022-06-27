@@ -4,7 +4,6 @@
 #include <Windows.h>
 
 // #define SHOW : Show Answer
-#define SHOW
 
 // 총 단어 개수 : 16962개
 #define MAX 16962
