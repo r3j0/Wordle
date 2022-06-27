@@ -143,7 +143,7 @@ int main(void) {
 			gotoxy(5, 13);
 			printf("Already Use.");
 			gotoxy(5, 14);
-			printf("                     ");
+			printf("                            ");
 			continue;
 		}
 		else {
@@ -151,14 +151,14 @@ int main(void) {
 				gotoxy(5, 13);
 				printf("It is not a word.");
 				gotoxy(5, 14);
-				printf("                     ");
+				printf("                            ");
 				continue;
 			}
 			else {
 				gotoxy(5, 13);
-				printf("                     ");
+				printf("                            ");
 				gotoxy(5, 14);
-				printf("                     ");
+				printf("                            ");
 
 				strcpy(da[hp], ch);
 
