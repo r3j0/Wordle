@@ -5,7 +5,7 @@
 
 // #define SHOW : Show Answer
 
-// �� �ܾ� ���� : 16962��
+// 총 단어 갯수 : 16962개
 #define MAX 16962
 
 // Path ( Database )
