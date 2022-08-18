@@ -1,15 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <Windows.h>
 
 // #define SHOW : Show Answer
+#define SHOW
 
-// �� �ܾ� ���� : 16962��
+// All Word Number : 16962
 #define MAX 16962
 
 // Path ( Database )
-char path[250] = "( all.txt directory )";
+char path[_MAX_PATH] = "( all.txt directory )";
 
 void color(int text, int back) { // Text Color Set Function
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (back<<4) + text);
@@ -57,6 +60,16 @@ int main(void) {
 	system("mode con cols=49 lines=25");
 	srand((int)time(NULL));
 
+	FILE* fp = fopen(path, "r");
+	if (fp) {
+		fclose(fp);
+	}
+	else {
+		printf("Can't Find all.txt!\n");
+		printf("Please check the variable [ path ] \n\n%s\n\n", path);
+		return 0;
+	}
+
 	char da[6][6] = {0,}; // Character Data
 	int st[6][6] = {0,}; // Status Data ( Green, Yellow )
 
@@ -100,8 +113,8 @@ int main(void) {
 #endif
 
 	while (hp < 6) {
-		char ch[6]; // Input Data
-		char pt[6]; // (for searching)
+		char ch[10]; // Input Data
+		char pt[10]; // (for searching)
 
 		int search = 0; // Whether the string existed in txt
 		int overlap = 0; // Whether the string overlap
