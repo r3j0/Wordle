@@ -156,7 +156,7 @@ int main(void) {
 			gotoxy(5, 13);
 			printf("Already Use.");
 			gotoxy(5, 14);
-			printf("                     ");
+			printf("                            ");
 			continue;
 		}
 		else {
@@ -164,14 +164,14 @@ int main(void) {
 				gotoxy(5, 13);
 				printf("It is not a word.");
 				gotoxy(5, 14);
-				printf("                     ");
+				printf("                            ");
 				continue;
 			}
 			else {
 				gotoxy(5, 13);
-				printf("                     ");
+				printf("                            ");
 				gotoxy(5, 14);
-				printf("                     ");
+				printf("                            ");
 
 				strcpy(da[hp], ch);
 
@@ -222,6 +222,7 @@ int main(void) {
 	printLine(hp, da, st); // Last line print & Answer Print
 	gotoxy(5, 15);
 	printf("The answer is %s. \n\n", answer);
+	Sleep(5000);
 
 	return 0;
 }
