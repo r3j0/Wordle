@@ -6,13 +6,13 @@
 #include <Windows.h>
 
 // #define SHOW : Show Answer
-#define SHOW
+// #define SHOW
 
 // All Word Number : 16962
 #define MAX 16962
 
 // Path ( Database )
-char path[_MAX_PATH] = "( all.txt directory )";
+char path[_MAX_PATH] = "C:/Wordle/all.txt";
 
 void color(int text, int back) { // Text Color Set Function
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (back<<4) + text);
