@@ -1,6 +1,6 @@
 # Wordle
 
-C Language를 사용하여 단어 데이터베이스에 기반한 Wordle 게임을 제작하였습니다.   
+C를 사용하여 단어 데이터베이스에 기반한 Wordle 게임을 제작하였습니다.   
 
 ![main](img/pic1.png)   
 
@@ -14,6 +14,5 @@ C Language를 사용하여 단어 데이터베이스에 기반한 Wordle 게임�
 
 ![main](img/pic2.png)
 
-path 변수에 all.txt ( 단어 데이터베이스 파일 ) 경로가 명시되어 있어야 합니다.   
-main.c 15행에서 수정 가능합니다.
-
+Wordle 폴더가 (C:) 디렉토리에 존재해야 합니다.  
+실행은 wordle.exe 파일을 사용합니다.
