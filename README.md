@@ -10,6 +10,8 @@ C를 사용하여 단어 데이터베이스에 기반한 Wordle 게임을 제작
 노란색 문자는 정답 단어와 문자는 같으나 자리가 다름을 보여줍니다.   
 흰색일 경우 정답 단어와 부합하지 않음을 보여줍니다.   
 
+이 게임의 단어 데이터베이스는 [Baekjoon Wordline Judge](https://www.acmicpc.net/problem/24904) 의 단어 목록을 참조하였습니다.
+
 > 사용 시 유의사항
 
 ![main](img/pic2.png)
